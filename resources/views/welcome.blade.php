@@ -56,7 +56,7 @@
                                 <h3 class="my-0">Login</h3>
                             </a>
                             <a href="{{ route('register') }}" type="button" class="btn btn-warning btn-lg px-5 ml-3 shadow" style="font-family: 'Montserrat Black',serif;">
-                                <h3 class="my-0">Register as Volunteer</h3>x
+                                <h3 class="my-0">Register as Volunteer</h3>
                             </a>
 
 {{--                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">--}}
