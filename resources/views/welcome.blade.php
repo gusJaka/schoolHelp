@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>SchoolHelp</title>
-        <link rel="icon" href="{{asset('admin/dist/img/help.png')}}">
+        <link rel="icon" href="{{asset('admin/dist/img/schoolHelp logo kotak.png')}}">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -43,20 +43,20 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 {{--                <div class="mt-8 bg-white overflow-hidden shadow sm:rounded-lg py-4">--}}
-                    <H3 class="dark:text-white text-center">Welcome to</H3>
+                <H3 class="dark:text-white text-center">Welcome to <b>SCHOOL HELP</b></H3>
 {{--                </div>--}}
-                <div class="mt-8 mb-5 bg-white overflow-hidden shadow sm:rounded-lg py-4">
-                    <h1 class="bg-white text-center align-middle mb-0" style="font-family: 'Montserrat Black',serif;">SCHOOL HELP</h1>
+                <div class="mt-8 mb-5 bg-dark overflow-hidden sm:rounded-lg py-4">
+                    <img src="{{asset('admin/dist/img/schoolHelp logo.png')}}" alt="School Help" class="rounded mx-auto d-block" style="width: 50%;">
                 </div>
 
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
+                <div class="flex justify-center mt-4 sm:items-center">
                     <div class="text-center text-sm text-gray-500 sm:text-left">
                         <div class="flex items-center ">
                             <a href="{{ route('login') }}" type="button" class="btn btn-primary btn-lg px-5 shadow" style="font-family: 'Montserrat Black',serif;">
                                 <h3 class="my-0">Login</h3>
                             </a>
                             <a href="{{ route('register') }}" type="button" class="btn btn-warning btn-lg px-5 ml-3 shadow" style="font-family: 'Montserrat Black',serif;">
-                                <h3 class="my-0">Register as Volunteer</h3>
+                                <h3 class="my-0">Register as Volunteer</h3>x
                             </a>
 
 {{--                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">--}}

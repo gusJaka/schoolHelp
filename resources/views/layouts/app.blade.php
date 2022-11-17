@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="icon" href="{{asset('admin/dist/img/help.png')}}">
+    <link rel="icon" href="{{asset('admin/dist/img/schoolHelp logo kotak.png')}}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -26,7 +26,15 @@
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
 {{--                    {{ config('app.name', 'Laravel') }} --}}
-                    <h3>School Help</h3>
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="{{asset('admin/dist/img/schoolHelp logo.png')}}" alt="School Help" class="" style="width: 100%;">
+                        </div>
+{{--                        <div class="col-1 align-middle">--}}
+{{--                            <h3>School Help</h3>--}}
+{{--                        </div>--}}
+                    </div>
+
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
