@@ -30,6 +30,7 @@ class HomeController extends Controller
 
     protected function createSchool(Request $request)
     {
+
         $name = $request->input('name');
         $email = $request->input('email');
         $password = $request->input('password');
@@ -41,7 +42,6 @@ class HomeController extends Controller
         ];
 
         User::create($data_insert);
-        return view('masterAdmin.dashboard');
-//        redirect()->back()->with('message', 'School Registered');
+        return redirect()->back();
     }
 }

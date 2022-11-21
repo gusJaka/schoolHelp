@@ -23,4 +23,5 @@ Route::get('/dashboard', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::post('/register-school', [App\Http\Controllers\HomeController::class, 'createSchool'])->name('registerSchool');
+Route::post('/register-school-admin', [App\Http\Controllers\HomeController::class, 'createSchool'])->name('registerSchoolAdmin');
+Route::post('/register-school', [App\Http\Controllers\School::class, 'store'])->name('registerSchool');
