@@ -11,11 +11,19 @@ class School extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $school = \App\Models\School::all();
+        $schoolCount = \App\Models\School::count();
+
+        $data = [
+            'school' => $school,
+            'school_count' => $schoolCount
+        ];
+
+        return view('masterAdmin/dashboard', $data);
     }
 
     /**

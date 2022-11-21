@@ -19,6 +19,7 @@ class School extends Migration
             $table->string('school_address');
             $table->string('school_city');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

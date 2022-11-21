@@ -1,14 +1,20 @@
 @extends('template')
-@section('content')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
 @endsection
 
 @section('js')
+    <script>
+        $(document).ready(function() {
+            $('.data-table').DataTable();
+        });
+    </script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
 @endsection
 
+@section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <div class="container-fluid">
@@ -32,9 +38,9 @@
     <div class="row">
         <div class="col-lg-4 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>5</h3>
+                    <h3>{{$school_count}}</h3>
 
                     <p>School</p>
                 </div>
@@ -47,7 +53,7 @@
         <!-- ./col -->
         <div class="col-lg-4 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-info">
                 <div class="inner">
                     <h3>53<sup style="font-size: 20px"></sup></h3>
 
@@ -62,7 +68,7 @@
         <!-- ./col -->
         <div class="col-lg-4 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-info">
                 <div class="inner">
                     <h3>44</h3>
 
@@ -154,56 +160,94 @@
 {{--        </div>--}}
 {{--    </div>--}}
 
-    <!-- Default box -->
-    <div class="card collapsed-card">
-        <div class="card-header ">
-            <h3 class="card-title pt-2"><b>Register School</b></h3>
+    <div class="row">
+        <div class="col-4">
+            <div class="card collapsed-card card-warning">
+                <div class="card-header">
+                    <h3 class="card-title pt-2"><b>Register School</b></h3>
 
-            <div class="card-tools">
-                <button type="button" class="btn btn-primary" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-plus"></i>
-                    Register School
-                </button>
-            </div>
-        </div>
-        <div class="card-body" style="display: none">
-            <form method="POST" action="{{ route('registerSchool') }}">
-                @csrf
-
-                <div class="row mb-3">
-                    <label for="name" class="col-md-4 col-form-label text-md-end">School Name</label>
-
-                    <div class="col-md-6">
-                        <input id="name" type="text" class="form-control " name="school_name" value="" required autocomplete="name" autofocus>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="address" class="col-md-4 col-form-label text-md-end">School Address</label>
-                    <div class="col-md-6">
-                        <input id="address" type="text" class="form-control " name="school_address" value="" required autocomplete="address">
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label for="city" class="col-md-4 col-form-label text-md-end">School City</label>
-                    <div class="col-md-6">
-                        <input id="city" type="text" class="form-control" name="school_city" required autocomplete="city">
-                    </div>
-                </div>
-
-                <div class="row mb-0 mt-5">
-                    <div class="col-md-12 ">
-                        <button type="submit" class="btn btn-primary btn-block">
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-primary" data-card-widget="collapse" title="Collapse">
+                            <i class="fas fa-plus"></i>
                             Register School
                         </button>
                     </div>
                 </div>
-            </form>
+                <div class="card-body" style="display: none">
+                    <form method="POST" action="{{ route('registerSchool') }}">
+                        @csrf
+
+                        <div class="row mb-3">
+                            <label for="name" class="col-md-3 col-form-label text-md-end">School Name</label>
+
+                            <div class="col-md-9">
+                                <input id="name" type="text" class="form-control " name="school_name" value="" required autocomplete="name" autofocus>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="address" class="col-md-3 col-form-label text-md-end">School Address</label>
+                            <div class="col-md-9">
+                                <input id="address" type="text" class="form-control " name="school_address" value="" required autocomplete="address">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="city" class="col-md-3 col-form-label text-md-end">School City</label>
+                            <div class="col-md-9">
+                                <input id="city" type="text" class="form-control" name="school_city" required autocomplete="city">
+                            </div>
+                        </div>
+
+                        <div class="row mb-0 mt-5">
+                            <div class="col-md-12 ">
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    Register School
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card ">
+                <div class="card-header">
+                    <h3 class="card-title">School Datatable</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th width="20">NO</th>
+                            <th>School Name</th>
+                            <th>School Address</th>
+                            <th>School City</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @for($i=0; $i<count($school); $i++)
+                            <tr>
+                                <td>{{$i+1}}</td>
+                                <td>{{$school[$i]->school_name}}</td>
+                                <td>{{$school[$i]->school_address}}</td>
+                                <td>{{$school[$i]->school_city}}</td>
+                                <td class="d-flex justify-content-center">
+                                    <a class="text-center">
+
+                                    </a>
+                                </td>
+                            </tr>
+                        @endfor
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
         </div>
     </div>
-
-
 
 </section>
 <!-- /.content -->

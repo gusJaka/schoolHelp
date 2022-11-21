@@ -19,8 +19,6 @@ class School extends Model
         'dgn_nama',
         'school_address',
         'school_city',
-        'created_at',
-        'updated_at',
     ];
 
 //    public function getCreatedAtAttribute()
