@@ -17,9 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/dashboard', function () {
-    return view('schoolHelp.schoolHelp');
+    return view('masterAdmin.dashboard');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/register-school', [App\Http\Controllers\HomeController::class, 'createSchool'])->name('registerSchool');
