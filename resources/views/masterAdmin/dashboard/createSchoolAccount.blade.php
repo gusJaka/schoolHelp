@@ -84,7 +84,7 @@
 
         <div class="card">
             <div class="card-header ">
-                <h3 class="card-title pt-2"><b>Edit User Account</b></h3>
+                <h3 class="card-title pt-2"><b>Create School Account</b></h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-primary" data-card-widget="collapse" title="Collapse">
@@ -108,6 +108,20 @@
                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
+
+                        <div class="col-md-6">
+                            <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username">
+
+                            @error('username')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                             @enderror
                         </div>
                     </div>

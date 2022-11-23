@@ -115,14 +115,17 @@ class School extends Controller
 
         $this->validate($request, [
             'email' => "required|unique:users",
+            'username' => "required|unique:users",
         ]);
 
         $name = $request->input('name');
+        $username = $request->input('username');
         $email = $request->input('email');
         $password = $request->input('password');
         $data_insert = [
             'id_school' => $id,
             'level_user' => 'school_admin',
+            'username' => $username,
             'name' => $name,
             'email' => $email,
             'password' => Hash::make($password),
@@ -159,6 +162,7 @@ class School extends Controller
 
         $this->validate($request, [
             'school_name' => "required|unique:school",
+            'username' => "required|unique:school",
         ]);
 
         $school_name = $request->input('school_name');

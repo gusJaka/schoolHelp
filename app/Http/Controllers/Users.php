@@ -107,9 +107,11 @@ class Users extends Controller
 
         $name = $request->input('name');
         $email = $request->input('email');
+        $username = $request->input('username');
         $password = $request->input('password');
         $data_insert = [
             'name' => $name,
+            'username' => $username,
             'email' => $email,
             'password' => Hash::make($password),
         ];
