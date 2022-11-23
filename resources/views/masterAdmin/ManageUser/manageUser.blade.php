@@ -1,4 +1,4 @@
-@extends('masterAdmin.mainUsers')
+@extends('masterAdmin.ManageUser.mainUsers')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
@@ -93,10 +93,10 @@
                         <thead>
                         <tr>
                             <th width="20">NO</th>
-                            <th>User Name</th>
-                            <th>User Email Address</th>
-                            <th>User Level Status</th>
-                            <th>Action</th>
+                            <th class="text-center">User Name</th>
+                            <th class="text-center">User Email Address</th>
+                            <th class="text-center">User Level Status</th>
+                            <th class="text-center">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -106,19 +106,38 @@
                                 <td>{{$user[$i]->name}}</td>
                                 <td>{{$user[$i]->email}}</td>
                                 @if($user[$i]->level_user === 'master_admin')
-                                    <td class="text-success">{{$user[$i]->level_user}}</td>
+                                    <td class="text-center">
+                                        <span class="badge-pill badge-success">
+                                            {{$user[$i]->level_user}}
+                                        </span>
+                                    </td>
                                 @elseif ($user[$i]->level_user === 'volunteer')
-                                    <td class="text-primary">{{$user[$i]->level_user}}</td>
+                                    <td class="text-center">
+                                        <span class="badge-pill badge-warning">
+                                            {{$user[$i]->level_user}}
+                                        </span>
+                                    </td>
                                 @else
-                                    <td class="text-warning">{{$user[$i]->level_user}}</td>
+                                    <td class="text-center">
+                                        <span class="badge-pill badge-primary">
+                                            {{$user[$i]->level_user}}
+                                        </span>
+                                    </td>
                                 @endif
                                 <td class="d-flex justify-content-center">
-                                    <a class="text-center btn-modal"
-                                       href="javascript:;"
-                                       data-route=""
-                                       title="Edit">
-                                        <i class="fa fa-user text-warning"></i>
+                                    <a type="button" class="btn btn-primary text-center mx-3"
+                                       href="{{route('editUserAccount', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($user[$i]->id)])}}"
+                                       title="Edit Account">
+                                        <i class="fa fa-user text-white"></i>
                                     </a>
+                                    @if($user[$i]->level_user != 'master_admin')
+                                        <a type="button" class="btn btn-danger text-center mx-3"
+                                           onclick="return confirm('Are you sure?')"
+                                           href="{{route('deleteUserAccount', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($user[$i]->id)])}}"
+                                           title="Delete Account">
+                                            <i class="fa fa-trash text-white"></i>
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endfor

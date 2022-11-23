@@ -1,4 +1,4 @@
-@extends('masterAdmin.mainDashboard')
+@extends('masterAdmin.dashboard.mainDashboard')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
@@ -163,9 +163,21 @@
                                 <td>{{$school[$i]->school_address}}</td>
                                 <td>{{$school[$i]->school_city}}</td>
                                 <td class="d-flex justify-content-center">
-                                    <a class="text-center btn-modal"
-                                        href="">
-                                        <i class="fa fa-user text-success"></i>
+                                    <a type="button" class="btn btn-primary text-center mx-3"
+                                       href="{{route('makeSchoolAccount', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($school[$i]->id_school)])}}"
+                                       title="Create Admin Account">
+                                        <i class="fa fa-user text-white"></i>
+                                    </a>
+                                    <a type="button" class="btn btn-warning text-center mx-3"
+                                       href="{{route('editSchool', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($school[$i]->id_school)])}}"
+                                       title="Edit School">
+                                        <i class="fa fa-school text-white"></i>
+                                    </a>
+                                    <a type="button" class="btn btn-danger text-center mx-3"
+                                       onclick="return confirm('Are you sure?')"
+                                       href="{{route('deleteSchool', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($school[$i]->id_school)])}}"
+                                       title="Delete Account">
+                                        <i class="fa fa-trash text-white"></i>
                                     </a>
                                 </td>
                             </tr>
