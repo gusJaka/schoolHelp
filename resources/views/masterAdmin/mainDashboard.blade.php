@@ -77,15 +77,15 @@
 {{--                        </a>--}}
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link active">
+                                <a href="{{route('dashboardSchool')}}" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard</p>
+                                    <p>School</p>
                                 </a>
                             </li>
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{route('manageUsers')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Users</p>
                                 </a>

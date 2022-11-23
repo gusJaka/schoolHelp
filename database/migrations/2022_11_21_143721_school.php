@@ -15,7 +15,7 @@ class School extends Migration
     {
         Schema::create('school', function (Blueprint $table) {
             $table->increments('id_school');
-            $table->string('school_name');
+            $table->string('school_name')->unique();
             $table->string('school_address');
             $table->string('school_city');
             $table->timestamps();

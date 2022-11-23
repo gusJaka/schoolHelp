@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
-class School extends Controller
+class Users extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +25,7 @@ class School extends Controller
             'school_count' => $schoolCount
         ];
 
-        return view('masterAdmin/dashboard', $data);
+        return view('masterAdmin/manageUser', $data);
     }
 
     /**
@@ -45,25 +42,11 @@ class School extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'school_name' => "required|unique:school",
-        ]);
-
-        $school_name = $request->input('school_name');
-        $school_address = $request->input('school_address');
-        $school_city = $request->input('school_city');
-        $data_insert = [
-            'school_name' => $school_name,
-            'school_address' => $school_address,
-            'school_city' => $school_city,
-        ];
-
-        \App\Models\School::create($data_insert);
-        return redirect()->back();
+        //
     }
 
     /**

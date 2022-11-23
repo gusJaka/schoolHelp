@@ -1,4 +1,4 @@
-@extends('template')
+@extends('masterAdmin.mainDashboard')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
@@ -20,12 +20,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><b>Dashboard SchoolHelp</b></h1>
+                <h1><b>School Help</b></h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard SchoolHelp</li>
+                    <li class="breadcrumb-item active">SchoolHelp</li>
                 </ol>
             </div>
         </div>
@@ -70,9 +70,9 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>44</h3>
+                    <h3>{{$user_count}}</h3>
 
-                    <p>Request</p>
+                    <p>Users</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
@@ -82,106 +82,34 @@
         </div>
     </div>
 
-{{--    <!-- Default box -->--}}
-{{--    <div class="card collapsed-card">--}}
-{{--        <div class="card-header ">--}}
-{{--            <h3 class="card-title pt-2"><b>Register School Account</b></h3>--}}
-
-{{--            <div class="card-tools">--}}
-{{--                <button type="button" class="btn btn-primary" data-card-widget="collapse" title="Collapse">--}}
-{{--                    <i class="fas fa-plus"></i>--}}
-{{--                    Register School--}}
-{{--                </button>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="card-body" style="display: none">--}}
-{{--            <form method="POST" action="{{ route('registerSchool') }}">--}}
-{{--                @csrf--}}
-
-{{--                <div class="row mb-3">--}}
-{{--                    <label for="name" class="col-md-4 col-form-label text-md-end">School Name</label>--}}
-
-{{--                    <div class="col-md-6">--}}
-{{--                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="" required autocomplete="name" autofocus>--}}
-
-{{--                        @error('name')--}}
-{{--                        <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                        @enderror--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="row mb-3">--}}
-{{--                    <label for="email" class="col-md-4 col-form-label text-md-end">Email Address</label>--}}
-
-{{--                    <div class="col-md-6">--}}
-{{--                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="" required autocomplete="email">--}}
-{{--                        <input type="hidden" name="level_user" value="school_admin" >--}}
-
-{{--                        @error('email')--}}
-{{--                        <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                        @enderror--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="row mb-3">--}}
-{{--                    <label for="password" class="col-md-4 col-form-label text-md-end">Password</label>--}}
-
-{{--                    <div class="col-md-6">--}}
-{{--                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">--}}
-
-{{--                        @error('password')--}}
-{{--                        <span class="invalid-feedback" role="alert">--}}
-{{--                                        <strong>{{ $message }}</strong>--}}
-{{--                                    </span>--}}
-{{--                        @enderror--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="row mb-3">--}}
-{{--                    <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Confirm Password</label>--}}
-
-{{--                    <div class="col-md-6">--}}
-{{--                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--                <div class="row mb-0 mt-5">--}}
-{{--                    <div class="col-md-12 ">--}}
-{{--                        <button type="submit" class="btn btn-primary btn-block">--}}
-{{--                            Register School--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </form>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
     <div class="row">
         <div class="col-4">
-            <div class="card collapsed-card card-warning">
+            <div class="card card-warning">
                 <div class="card-header">
                     <h3 class="card-title pt-2"><b>Register School</b></h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-primary" data-card-widget="collapse" title="Collapse">
-                            <i class="fas fa-plus"></i>
+                            <i class="fas fa-minus"></i>
                             Register School
                         </button>
                     </div>
                 </div>
-                <div class="card-body" style="display: none">
+                <div class="card-body" >
                     <form method="POST" action="{{ route('registerSchool') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-3 col-form-label text-md-end">School Name</label>
+                            <label for="school_name" class="col-md-3 col-form-label text-md-end">School Name</label>
 
                             <div class="col-md-9">
-                                <input id="name" type="text" class="form-control " name="school_name" value="" required autocomplete="name" autofocus>
+                                <input id="school_name" type="text" class="form-control @error('school_name') is-invalid @enderror" name="school_name" value="" required autocomplete="school_name" autofocus>
+
+                                @error('school_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -235,8 +163,9 @@
                                 <td>{{$school[$i]->school_address}}</td>
                                 <td>{{$school[$i]->school_city}}</td>
                                 <td class="d-flex justify-content-center">
-                                    <a class="text-center">
-
+                                    <a class="text-center btn-modal"
+                                        href="">
+                                        <i class="fa fa-user text-success"></i>
                                     </a>
                                 </td>
                             </tr>

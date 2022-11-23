@@ -30,7 +30,6 @@ class HomeController extends Controller
 
     protected function createSchool(Request $request)
     {
-
         $name = $request->input('name');
         $email = $request->input('email');
         $password = $request->input('password');
