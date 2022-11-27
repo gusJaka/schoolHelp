@@ -22,6 +22,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+
                             </div>
                         </div>
 
@@ -41,6 +42,9 @@
 
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
+                                @if($errors->any())
+                                    <span class="text-danger">{{$errors->first()}}</span>
+                                @endif
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
