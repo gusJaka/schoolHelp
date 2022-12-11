@@ -21,8 +21,11 @@
     <!-- Tempusdominus Bootstrap 4 -->
     <link rel="stylesheet" href="{{asset('admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+{{--    <!-- Styles -->--}}
+{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
 </head>
 <body class="bg-dark">
     <div id="app">
