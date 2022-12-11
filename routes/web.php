@@ -20,7 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/register-school-admin', [App\Http\Controllers\HomeController::class, 'createSchool'])->name('registerSchoolAdmin');
 
+/**
+ * Master Admin
+ */
 Route::get('/dashboard', [App\Http\Controllers\School::class, 'index'])->name('dashboardSchool');
 Route::post('/register-school', [App\Http\Controllers\School::class, 'store'])->name('registerSchool');
 Route::get('/register-school/create-account/{id}', [App\Http\Controllers\School::class, 'createAccount'])->name('makeSchoolAccount');
@@ -34,6 +38,12 @@ Route::get('/manage-users/{id}', [App\Http\Controllers\Users::class, 'edit'])->n
 Route::post('/manage-users/update/{id}', [App\Http\Controllers\Users::class, 'update'])->name('updateUserAccount');
 Route::get('/manage-users/delete/{id}', [App\Http\Controllers\Users::class, 'destroy'])->name('deleteUserAccount');
 
-Route::post('/register-school-admin', [App\Http\Controllers\HomeController::class, 'createSchool'])->name('registerSchoolAdmin');
+/**
+ * School Admin
+ */
+Route::get('/dashboard-school', [App\Http\Controllers\School\SchoolDashboard::class, 'index'])->name('requestSchool');
 
+/**
+ * Volunteer
+ */
 Route::post('/register-volunteer', [App\Http\Controllers\RegisterVolunteer::class, 'store'])->name('registerVolunteer');
