@@ -42,7 +42,8 @@ Route::get('/manage-users/delete/{id}', [App\Http\Controllers\Users::class, 'des
  * School Admin
  */
 Route::get('/dashboard-school', [App\Http\Controllers\School\SchoolDashboard::class, 'index'])->name('requestSchool');
-Route::post('/dashboard-school/submit-request', [App\Http\Controllers\School\SchoolDashboard::class, 'store'])->name('submitRequest');
+Route::post('/dashboard-school/submit-request-tutorial', [App\Http\Controllers\School\SchoolDashboard::class, 'store_tutorial'])->name('submitRequestTutorial');
+Route::post('/dashboard-school/submit-request-resource', [App\Http\Controllers\School\SchoolDashboard::class, 'store_resource'])->name('submitRequestResource');
 
 
 /**

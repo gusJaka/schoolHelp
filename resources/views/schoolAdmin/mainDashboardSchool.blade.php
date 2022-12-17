@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="{{asset('admin/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('admin/plugins/select2/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{asset('admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
@@ -75,7 +78,7 @@
 {{--                        </a>--}}
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('dashboardSchool')}}" class="nav-link active">
+                                <a href="{{route('requestSchool')}}" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Dashboard School</p>
                                 </a>
@@ -117,8 +120,8 @@
 <script src="{{asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('admin/dist/js/adminlte.min.js')}}"></script>
-
-
+<!-- Select2 -->
+<script src="{{asset('admin/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- DataTables  & Plugins -->
 <script src="{{asset('admin/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
@@ -147,6 +150,14 @@
             "autoWidth": false,
             "responsive": true,
         });
+
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
     });
 </script>
 

@@ -86,7 +86,9 @@
         <div class="col-6">
             <div class="card card-warning">
                 <div class="card-header">
-                    <h3 class="card-title pt-2"><b>Request Tutorial</b></h3>
+                    <h3 class="card-title pt-2">
+                        <i class="fa fa-book"></i>
+                        <b>Request Tutorial</b></h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-primary" data-card-widget="collapse" title="Collapse">
@@ -96,7 +98,7 @@
                     </div>
                 </div>
                 <div class="card-body" >
-                    <form method="POST" action="{{ route('submitRequest') }}">
+                    <form method="POST" action="{{ route('submitRequestTutorial') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -141,7 +143,7 @@
                         <div class="row mb-0 mt-5">
                             <div class="col-md-12 ">
                                 <button type="submit" class="btn btn-primary btn-block">
-                                    Register School
+                                    Request Tutorial
                                 </button>
                             </div>
                         </div>
@@ -150,53 +152,90 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="card ">
+            <div class="card card-warning">
                 <div class="card-header">
-                    <h3 class="card-title">School Datatable</h3>
+                    <h3 class="card-title pt-2">
+                        <i class="fa fa-laptop"></i>
+                        <b>Request Resource</b></h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-primary" data-card-widget="collapse" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                            Request Resource
+                        </button>
+                    </div>
                 </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                    <table id="example2" class="table table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th width="20">NO</th>
-                            <th>School Name</th>
-                            <th>School Address</th>
-                            <th>School City</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @for($i=0; $i<count($school); $i++)
-                            <tr>
-                                <td>{{$i+1}}</td>
-                                <td>{{$school[$i]->school_name}}</td>
-                                <td>{{$school[$i]->school_address}}</td>
-                                <td>{{$school[$i]->school_city}}</td>
-                                <td class="d-flex justify-content-center">
-                                    <a type="button" class="btn btn-primary text-center mx-3"
-                                       href="{{route('makeSchoolAccount', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($school[$i]->id_school)])}}"
-                                       title="Create Admin Account">
-                                        <i class="fa fa-user text-white"></i>
-                                    </a>
-                                    <a type="button" class="btn btn-warning text-center mx-3"
-                                       href="{{route('editSchool', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($school[$i]->id_school)])}}"
-                                       title="Edit School">
-                                        <i class="fa fa-school text-white"></i>
-                                    </a>
-                                    <a type="button" class="btn btn-danger text-center mx-3"
-                                       onclick="return confirm('Are you sure?')"
-                                       href="{{route('deleteSchool', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($school[$i]->id_school)])}}"
-                                       title="Delete Account">
-                                        <i class="fa fa-trash text-white"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        @endfor
-                        </tbody>
-                    </table>
+                <div class="card-body" >
+                    <form method="POST" action="{{ route('submitRequestResource') }}">
+                        @csrf
+
+                        <div class="row mb-3">
+                            <label for="description" class="col-md-3 col-form-label text-md-end">Description</label>
+
+                            <div class="col-md-9">
+                                <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus></textarea>
+                                @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 form-group">
+                            <label for="resource_type" class="col-md-3 col-form-label text-md-end">Resource Type</label>
+
+                            <div class="col-md-9">
+{{--                                <input id="resource_type" type="text" class="form-control @error('resource_type') is-invalid @enderror" name="resource_type" required autocomplete="resource_type" autofocus>--}}
+
+                                <select id="resource_type" class="form-control" type="text"
+                                        name="resource_type">
+                                    <option value="" disabled selected></option>
+                                    <option value="mobile_device">Mobile Device</option>
+                                    <option value="personal_computer">Personal Computer</option>
+                                    <option value="networking_equipment">Networking Equipment</option>
+                                </select>
+
+
+{{--                                <select class="form-control select2" style="width: 100%;">--}}
+{{--                                    <option selected="selected">Alabama</option>--}}
+{{--                                    <option>Alaska</option>--}}
+{{--                                    <option>California</option>--}}
+{{--                                    <option>Delaware</option>--}}
+{{--                                    <option>Tennessee</option>--}}
+{{--                                    <option>Texas</option>--}}
+{{--                                    <option>Washington</option>--}}
+{{--                                </select>--}}
+                                @error('resource_type')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="number_required" class="col-md-3 col-form-label text-md-end">Number Required</label>
+
+                            <div class="col-md-9">
+                                <input id="number_required" type="number" min="1" class="form-control @error('number_required') is-invalid @enderror" name="number_required" required autocomplete="number_required" autofocus>
+                                @error('number_required')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-0 mt-5">
+                            <div class="col-md-12 ">
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    Request Resource
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <!-- /.card-body -->
             </div>
         </div>
     </div>
