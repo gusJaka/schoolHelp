@@ -77,7 +77,7 @@
                             <li class="nav-item">
                                 <a href="{{route('dashboardSchool')}}" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Request</p>
+                                    <p>Dashboard School</p>
                                 </a>
                             </li>
                         </ul>

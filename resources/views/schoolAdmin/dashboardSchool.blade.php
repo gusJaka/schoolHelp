@@ -20,12 +20,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1><b>School Help</b></h1>
+                <h1>Dashboard <b>{{$school_data->school_name}}</b></h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">SchoolHelp</li>
+                    <li class="breadcrumb-item active">Dashboard School</li>
                 </ol>
             </div>
         </div>
@@ -83,29 +83,28 @@
     </div>
 
     <div class="row">
-        <div class="col-4">
+        <div class="col-6">
             <div class="card card-warning">
                 <div class="card-header">
-                    <h3 class="card-title pt-2"><b>Register School</b></h3>
+                    <h3 class="card-title pt-2"><b>Request Tutorial</b></h3>
 
                     <div class="card-tools">
                         <button type="button" class="btn btn-primary" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
-                            Register School
+                            Request Tutorial
                         </button>
                     </div>
                 </div>
                 <div class="card-body" >
-                    <form method="POST" action="{{ route('registerSchool') }}">
+                    <form method="POST" action="{{ route('submitRequest') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="school_name" class="col-md-3 col-form-label text-md-end">School Name</label>
+                            <label for="description" class="col-md-3 col-form-label text-md-end">Description</label>
 
                             <div class="col-md-9">
-                                <input id="school_name" type="text" class="form-control @error('school_name') is-invalid @enderror" name="school_name" value="" required autocomplete="school_name" autofocus>
-
-                                @error('school_name')
+                                <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus></textarea>
+                                @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -114,16 +113,28 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="address" class="col-md-3 col-form-label text-md-end">School Address</label>
+                            <label for="student_level" class="col-md-3 col-form-label text-md-end">Student Level</label>
+
                             <div class="col-md-9">
-                                <input id="address" type="text" class="form-control " name="school_address" value="" required autocomplete="address">
+                                <input id="student_level" type="text" class="form-control @error('student_level') is-invalid @enderror" name="student_level" required autocomplete="student_level" autofocus>
+                                @error('student_level')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="city" class="col-md-3 col-form-label text-md-end">School City</label>
+                            <label for="student_amount" class="col-md-3 col-form-label text-md-end">Student Amount</label>
+
                             <div class="col-md-9">
-                                <input id="city" type="text" class="form-control" name="school_city" required autocomplete="city">
+                                <input id="student_amount" type="number" min="1" class="form-control @error('student_amount') is-invalid @enderror" name="student_amount" required autocomplete="student_amount" autofocus>
+                                @error('student_amount')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
@@ -138,7 +149,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-6">
             <div class="card ">
                 <div class="card-header">
                     <h3 class="card-title">School Datatable</h3>
