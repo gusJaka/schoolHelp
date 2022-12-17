@@ -40,9 +40,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>{{$school_count}}</h3>
+                    <h3>{{$request_tutorial_count}}</h3>
 
-                    <p>School</p>
+                    <p>Tutorial Request</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
@@ -53,11 +53,11 @@
         <!-- ./col -->
         <div class="col-lg-4 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>53<sup style="font-size: 20px"></sup></h3>
+                    <h3>{{$request_resource_count}}<sup style="font-size: 20px"></sup></h3>
 
-                    <p>Volunteer</p>
+                    <p>Resource Request</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
@@ -186,9 +186,7 @@
                             <label for="resource_type" class="col-md-3 col-form-label text-md-end">Resource Type</label>
 
                             <div class="col-md-9">
-{{--                                <input id="resource_type" type="text" class="form-control @error('resource_type') is-invalid @enderror" name="resource_type" required autocomplete="resource_type" autofocus>--}}
-
-                                <select id="resource_type" class="form-control" type="text"
+                                <select id="resource_type" class="form-control @error('resource_type') is-invalid @enderror" type="text"
                                         name="resource_type">
                                     <option value="" disabled selected></option>
                                     <option value="mobile_device">Mobile Device</option>
@@ -196,16 +194,6 @@
                                     <option value="networking_equipment">Networking Equipment</option>
                                 </select>
 
-
-{{--                                <select class="form-control select2" style="width: 100%;">--}}
-{{--                                    <option selected="selected">Alabama</option>--}}
-{{--                                    <option>Alaska</option>--}}
-{{--                                    <option>California</option>--}}
-{{--                                    <option>Delaware</option>--}}
-{{--                                    <option>Tennessee</option>--}}
-{{--                                    <option>Texas</option>--}}
-{{--                                    <option>Washington</option>--}}
-{{--                                </select>--}}
                                 @error('resource_type')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -236,6 +224,77 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card ">
+                <div class="card-header">
+                    <h3 class="card-title"><b>Request Tutorial List</b></h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th width="20">NO</th>
+                            <th>Request Description</th>
+                            <th>Student Level</th>
+                            <th>Student Amount</th>
+                            <th>Request Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @for($i=0; $i<count($request_tutorial); $i++)
+                            <tr>
+                                <td>{{$i+1}}</td>
+                                <td>{{$request_tutorial[$i]->req_description}}</td>
+                                <td>{{$request_tutorial[$i]->student_level}}</td>
+                                <td>{{$request_tutorial[$i]->student_amount}}</td>
+                                <td class="d-flex justify-content-center"><span class="badge-success badge-pill">{{$request_tutorial[$i]->req_request_status}}</span></td>
+                            </tr>
+                        @endfor
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card ">
+                <div class="card-header">
+                    <h3 class="card-title"><b>Request Resource List</b></h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example3" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th width="20">NO</th>
+                            <th>Request Description</th>
+                            <th>Student Level</th>
+                            <th>Student Amount</th>
+                            <th>Request Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @for($i=0; $i<count($request_resource); $i++)
+                            <tr>
+                                <td>{{$i+1}}</td>
+                                <td>{{$request_resource[$i]->req_description}}</td>
+                                <td>{{$request_resource[$i]->res_resource_type}}</td>
+                                <td>{{$request_resource[$i]->res_number_required}}</td>
+                                <td class="d-flex justify-content-center">
+                                    <span class="badge-success badge-pill">{{$request_resource[$i]->req_request_status}}</span>
+                                </td>
+                            </tr>
+                        @endfor
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
             </div>
         </div>
     </div>

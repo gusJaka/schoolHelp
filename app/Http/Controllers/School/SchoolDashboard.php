@@ -23,12 +23,34 @@ class SchoolDashboard extends Controller
         $user = \App\Models\User::all();
         $user_count = \App\Models\User::count();
 
+        $request_tutorial = mRequest::where('id_school', Auth::user()->id_school)
+            ->where('req_type', 'tutorial')
+            ->leftjoin('tutorial_request', 'tutorial_request.id_tutorial_request','=','request.id_tutorial_request')
+            ->get();
+        $request_tutorial_count = mRequest::where('id_school', Auth::user()->id_school)
+            ->where('req_type', 'tutorial')
+            ->leftjoin('tutorial_request', 'tutorial_request.id_tutorial_request','=','request.id_tutorial_request')
+            ->count();
+
+        $request_resource = mRequest::where('id_school', Auth::user()->id_school)
+            ->where('req_type', 'resource')
+            ->leftjoin('resource_request', 'resource_request.id_resource_request','=','request.id_resource_request')
+            ->get();
+        $request_resource_count = mRequest::where('id_school', Auth::user()->id_school)
+            ->where('req_type', 'resource')
+            ->leftjoin('resource_request', 'resource_request.id_resource_request','=','request.id_resource_request')
+            ->count();
+
         $data = [
             'user' => $user,
             'user_count' => $user_count,
             'school' => $school,
             'school_count' => $schoolCount,
-            'school_data' => $school_data
+            'school_data' => $school_data,
+            'request_tutorial' => $request_tutorial,
+            'request_tutorial_count' => $request_tutorial_count,
+            'request_resource' => $request_resource,
+            'request_resource_count' => $request_resource_count,
         ];
 
         return view('schoolAdmin/dashboardSchool', $data);
@@ -58,6 +80,7 @@ class SchoolDashboard extends Controller
             'id_school' => $id_school,
             'id_tutorial_request' => $tutorial_request->id_tutorial_request,
             'req_description' => $description,
+            'req_type' => 'tutorial',
             'req_request_date' => Carbon::now(),
             'req_request_status' => 'new',
         ];
@@ -90,6 +113,7 @@ class SchoolDashboard extends Controller
             'id_school' => $id_school,
             'id_resource_request' => $resource_request->id_resource_request,
             'req_description' => $description,
+            'req_type' => 'resource',
             'req_request_date' => Carbon::now(),
             'req_request_status' => 'new',
         ];
