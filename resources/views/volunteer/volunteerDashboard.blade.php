@@ -25,7 +25,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard School</li>
+                        <li class="breadcrumb-item active">Dashboard Volunteer</li>
                     </ol>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3><sup style="font-size: 20px">{{$request_resource_count}}</sup></h3>
+                        <h3>{{$request_resource_count}}</h3>
 
                         <p>Resource Request</p>
                     </div>
@@ -106,7 +106,14 @@
                             <td>{{$request_tutorial[$i]->req_description}}</td>
                             <td>{{$request_tutorial[$i]->school_name}}</td>
                             <td>{{$request_tutorial[$i]->school_city}}</td>
-                            <td class="d-flex justify-content-center"><span class="badge-success badge-pill">{{$request_tutorial[$i]->req_request_status}}</span></td>
+                            <td class="d-flex justify-content-center">
+                                <a type="button" class="btn btn-primary text-center mx-3"
+                                   href="{{route('viewDetailRequestTutorial', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($request_tutorial[$i]->id_request)])}}"
+                                   title="View Detail">
+                                    <i class="fa fa-eye text-white"></i>
+                                    View Detail
+                                </a>
+                            </td>
                         </tr>
                     @endfor
                     </tbody>
@@ -140,7 +147,14 @@
                             <td>{{$request_resource[$i]->req_description}}</td>
                             <td>{{$request_resource[$i]->school_name}}</td>
                             <td>{{$request_resource[$i]->school_city}}</td>
-                            <td class="d-flex justify-content-center"><span class="badge-success badge-pill">{{$request_resource[$i]->req_request_status}}</span></td>
+                            <td class="d-flex justify-content-center">
+                                <a type="button" class="btn btn-primary text-center mx-3"
+                                   href="{{route('viewDetailRequestResource', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($request_resource[$i]->id_request)])}}"
+                                   title="View Detail">
+                                    <i class="fa fa-eye text-white"></i>
+                                    View Detail
+                                </a>
+                            </td>
                         </tr>
                     @endfor
                     </tbody>

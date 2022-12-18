@@ -8,6 +8,7 @@ use App\Models\mVolunteer;
 use App\Models\School;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class VolunteerDashboard extends Controller
 {
@@ -51,5 +52,37 @@ class VolunteerDashboard extends Controller
         ];
 
         return view('volunteer/volunteerDashboard', $data);
+    }
+
+    public function view_detail_request_tutorial($id)
+    {
+        $id = Crypt::decrypt($id);
+        $request = mRequest
+            ::where('request.id_request', $id)
+            ->leftjoin('school', 'school.id_school','=','request.id_school')
+            ->leftjoin('tutorial_request', 'tutorial_request.id_tutorial_request','=','request.id_tutorial_request')
+            ->first();
+
+        $data = [
+            'request' => $request,
+        ];
+
+        return view('volunteer/viewRequestTutorial', $data);
+    }
+
+    public function view_detail_request_resource($id)
+    {
+        $id = Crypt::decrypt($id);
+        $request = mRequest
+            ::where('request.id_request', $id)
+            ->leftjoin('school', 'school.id_school','=','request.id_school')
+            ->leftjoin('resource_request', 'resource_request.id_resource_request','=','request.id_resource_request')
+            ->first();
+
+        $data = [
+            'request' => $request,
+        ];
+
+        return view('volunteer/viewRequestResource', $data);
     }
 }

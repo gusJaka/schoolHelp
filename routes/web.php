@@ -45,10 +45,12 @@ Route::get('/dashboard-school', [App\Http\Controllers\School\SchoolDashboard::cl
 Route::post('/dashboard-school/submit-request-tutorial', [App\Http\Controllers\School\SchoolDashboard::class, 'store_tutorial'])->name('submitRequestTutorial');
 Route::post('/dashboard-school/submit-request-resource', [App\Http\Controllers\School\SchoolDashboard::class, 'store_resource'])->name('submitRequestResource');
 
-
 /**
  * Volunteer
  */
 Route::post('/register-volunteer', [App\Http\Controllers\RegisterVolunteer::class, 'store'])->name('registerVolunteer');
 Route::get('/dashboard-volunteer', [App\Http\Controllers\Volunteer\VolunteerDashboard::class, 'index'])->name('dashboardVolunteer');
+Route::get('/dashboard-volunteer/view-request-tutorial-detail/{id}', [App\Http\Controllers\Volunteer\VolunteerDashboard::class, 'view_detail_request_tutorial'])->name('viewDetailRequestTutorial');
+Route::get('/dashboard-volunteer/view-request-resource-detail/{id}', [App\Http\Controllers\Volunteer\VolunteerDashboard::class, 'view_detail_request_resource'])->name('viewDetailRequestResource');
+
 
