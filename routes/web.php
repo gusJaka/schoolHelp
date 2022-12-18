@@ -50,3 +50,5 @@ Route::post('/dashboard-school/submit-request-resource', [App\Http\Controllers\S
  * Volunteer
  */
 Route::post('/register-volunteer', [App\Http\Controllers\RegisterVolunteer::class, 'store'])->name('registerVolunteer');
+Route::get('/dashboard-volunteer', [App\Http\Controllers\Volunteer\VolunteerDashboard::class, 'index'])->name('dashboardVolunteer');
+

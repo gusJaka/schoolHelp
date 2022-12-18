@@ -56,6 +56,9 @@ class LoginController extends Controller
             else if (Auth::user()->level_user === 'school_admin'){
                 return redirect()->route('requestSchool');
             }
+            else if (Auth::user()->level_user === 'volunteer'){
+                return redirect()->route('dashboardVolunteer');
+            }
         }
         else{
             return redirect()->back()->withErrors(['msg' => 'Account not exist / password is wrong']);;
