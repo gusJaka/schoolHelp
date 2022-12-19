@@ -52,5 +52,7 @@ Route::post('/register-volunteer', [App\Http\Controllers\RegisterVolunteer::clas
 Route::get('/dashboard-volunteer', [App\Http\Controllers\Volunteer\VolunteerDashboard::class, 'index'])->name('dashboardVolunteer');
 Route::get('/dashboard-volunteer/view-request-tutorial-detail/{id}', [App\Http\Controllers\Volunteer\VolunteerDashboard::class, 'view_detail_request_tutorial'])->name('viewDetailRequestTutorial');
 Route::get('/dashboard-volunteer/view-request-resource-detail/{id}', [App\Http\Controllers\Volunteer\VolunteerDashboard::class, 'view_detail_request_resource'])->name('viewDetailRequestResource');
+Route::post('/dashboard-volunteer/view-request-resource-detail/make-offer/{id}', [App\Http\Controllers\Volunteer\VolunteerDashboard::class, 'make_offer'])->name('makeOffer');
+
 
 

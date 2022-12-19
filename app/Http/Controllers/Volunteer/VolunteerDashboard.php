@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Volunteer;
 
 use App\Http\Controllers\Controller;
+use App\Models\mOffer;
 use App\Models\mRequest;
 use App\Models\mVolunteer;
 use App\Models\School;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -84,5 +86,29 @@ class VolunteerDashboard extends Controller
         ];
 
         return view('volunteer/viewRequestResource', $data);
+    }
+
+    public function make_offer(Request $request, $id)
+    {
+        $id = Crypt::decrypt($id);
+        $this->validate($request, [
+            'remarks' => "required",
+            'amount' => "required",
+        ]);
+
+        $remarks = $request->input('remarks');
+        $amount = $request->input('amount');
+        $data_insert = [
+            'id_request' => $id,
+            'id_volunteer' => Auth::user()->id_volunteer,
+            'offer_remarks' => $remarks,
+            'offer_amount' => $amount,
+            'offer_date' => Carbon::now(),
+            'offer_status' => 'pending',
+        ];
+
+        mOffer::create($data_insert);
+
+        return redirect()->route('dashboardVolunteer');
     }
 }

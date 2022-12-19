@@ -18,9 +18,9 @@ class RequestOffer extends Migration
             $table->integer('id_school');
             $table->integer('id_resource_request')->nullable();
             $table->integer('id_tutorial_request')->nullable();
-            $table->string('req_description');
+            $table->text('req_description');
             $table->dateTime('req_request_date');
-            $table->enum('req_request_status',['new','closed']);
+            $table->enum('req_request_status',['new','offered','closed']);
             $table->enum('req_type',['tutorial','resource']);
             $table->timestamps();
             $table->softDeletes();

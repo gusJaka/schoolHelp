@@ -274,8 +274,8 @@
                         <tr>
                             <th width="20">NO</th>
                             <th>Request Description</th>
-                            <th>Student Level</th>
-                            <th>Student Amount</th>
+                            <th>Resource Type</th>
+                            <th>Number Required</th>
                             <th>Request Status</th>
                         </tr>
                         </thead>

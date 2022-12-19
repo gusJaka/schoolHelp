@@ -47,12 +47,12 @@
                     <div class="card-header">
                         <h3 class="card-title pt-2">
                             <i class="fa fa-eye"></i>
-                            <b>Detail Request</b></h3>
+                            <b>Detail Request Resource</b></h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-primary" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
-                                Detail Request
+                                Detail Request Resource
                             </button>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                     <div class="card-body" >
-                        <form method="POST" action="{{ route('submitRequestResource') }}">
+                        <form method="POST" action="{{ route('makeOffer', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($request->id_request)]) }}">
                             @csrf
 
                             <div class="row mb-3">

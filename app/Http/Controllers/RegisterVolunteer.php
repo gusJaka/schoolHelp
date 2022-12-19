@@ -42,6 +42,6 @@ class RegisterVolunteer extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('dashboardSchool');
+        return redirect()->route('dashboardVolunteer');
     }
 }
