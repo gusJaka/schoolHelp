@@ -67,6 +67,20 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="occupation" class="col-md-4 col-form-label justify-content-end d-flex">{{ __('Occupation') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="occupation" type="text" class="form-control @error('occupation') is-invalid @enderror" name="occupation" value="{{ old('occupation') }}" required autocomplete="occupation" autofocus>
+
+                                @error('occupation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="username" class="col-md-4 col-form-label justify-content-end d-flex">{{ __('Username') }}</label>
 
                             <div class="col-md-6">

@@ -81,7 +81,7 @@
                 </div>
             </div>
         </div>
-        <div class="card my-3">
+        <div class="card my-3 card-warning">
             <div class="card-header">
                 <h3 class="card-title"><b>Request Tutorial List</b></h3>
             </div>
@@ -122,7 +122,7 @@
             <!-- /.card-body -->
         </div>
 
-        <div class="card my-5">
+        <div class="card my-5 card-warning">
             <div class="card-header">
                 <h3 class="card-title"><b>Request Resource List</b></h3>
             </div>

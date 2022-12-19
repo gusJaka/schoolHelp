@@ -20,6 +20,7 @@ class mVolunteer extends Model
         'vol_birth_date',
         'vol_address',
         'vol_email',
+        'vol_occupation',
     ];
 
     public function getUpdatedAtAttribute()

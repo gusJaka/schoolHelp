@@ -93,12 +93,12 @@
                     <div class="card-header">
                         <h3 class="card-title pt-2">
                             <i class="fa fa-laptop"></i>
-                            <b>Request Resource</b></h3>
+                            <b>Make Offer</b></h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-primary" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
-                                Request Resource
+                                Make Offer
                             </button>
                         </div>
                     </div>
@@ -107,31 +107,11 @@
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="description" class="col-md-3 col-form-label text-md-end">Description</label>
+                                <label for="remarks" class="col-md-3 col-form-label text-md-end">Remarks</label>
 
                                 <div class="col-md-9">
-                                    <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description" autofocus></textarea>
-                                    @error('description')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 form-group">
-                                <label for="resource_type" class="col-md-3 col-form-label text-md-end">Resource Type</label>
-
-                                <div class="col-md-9">
-                                    <select id="resource_type" class="form-control @error('resource_type') is-invalid @enderror" type="text"
-                                            name="resource_type">
-                                        <option value="" disabled selected></option>
-                                        <option value="mobile_device">Mobile Device</option>
-                                        <option value="personal_computer">Personal Computer</option>
-                                        <option value="networking_equipment">Networking Equipment</option>
-                                    </select>
-
-                                    @error('resource_type')
+                                    <textarea id="remarks" type="text" class="form-control @error('remarks') is-invalid @enderror" name="remarks" required autocomplete="remarks" autofocus></textarea>
+                                    @error('remarks')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -140,11 +120,11 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="number_required" class="col-md-3 col-form-label text-md-end">Number Required</label>
+                                <label for="amount" class="col-md-3 col-form-label text-md-end">Amount</label>
 
                                 <div class="col-md-9">
-                                    <input id="number_required" type="number" min="1" class="form-control @error('number_required') is-invalid @enderror" name="number_required" required autocomplete="number_required" autofocus>
-                                    @error('number_required')
+                                    <input id="amount" type="number" class="form-control @error('amount') is-invalid @enderror" name="amount" required autocomplete="amount" autofocus>
+                                    @error('amount')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -155,7 +135,7 @@
                             <div class="row mb-0 mt-5">
                                 <div class="col-md-12 ">
                                     <button type="submit" class="btn btn-primary btn-block">
-                                        Request Resource
+                                        Make Offers
                                     </button>
                                 </div>
                             </div>
