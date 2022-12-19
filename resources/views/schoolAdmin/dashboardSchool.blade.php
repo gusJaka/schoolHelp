@@ -70,7 +70,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
                 <div class="inner">
-                    <h3>{{$user_count}}</h3>
+                    <h3>{{$offer}}</h3>
 
                     <p>Offers</p>
                 </div>

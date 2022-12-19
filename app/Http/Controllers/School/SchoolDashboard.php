@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\School;
 
 use App\Http\Controllers\Controller;
+use App\Models\mOffer;
 use App\Models\mRequest;
 use App\Models\mResourceRequest;
 use App\Models\mTutorialRequest;
@@ -41,6 +42,9 @@ class SchoolDashboard extends Controller
             ->leftjoin('resource_request', 'resource_request.id_resource_request','=','request.id_resource_request')
             ->count();
 
+        $offer = mOffer::leftjoin('request', 'request.id_request','=','offer.id_request')
+            ->where('request.id_school', Auth::user()->id_school)->count();
+
         $data = [
             'user' => $user,
             'user_count' => $user_count,
@@ -51,6 +55,7 @@ class SchoolDashboard extends Controller
             'request_tutorial_count' => $request_tutorial_count,
             'request_resource' => $request_resource,
             'request_resource_count' => $request_resource_count,
+            'offer' => $offer,
         ];
 
         return view('schoolAdmin/dashboardSchool', $data);
