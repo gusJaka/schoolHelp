@@ -18,34 +18,34 @@ class VolunteerDashboard extends Controller
     {
         $volunteer_data = mVolunteer::where('id_volunteer', Auth::user()->id_volunteer)->first();
 
-        $school = \App\Models\School::all();
-        $schoolCount = \App\Models\School::count();
-        $user = \App\Models\User::all();
-        $user_count = \App\Models\User::count();
-
         $request_tutorial = mRequest::where('req_type', 'tutorial')
+            ->where('req_request_status','new')
             ->leftjoin('school', 'school.id_school','=','request.id_school')
             ->leftjoin('tutorial_request', 'tutorial_request.id_tutorial_request','=','request.id_tutorial_request')
             ->get();
         $request_tutorial_count = mRequest::where('req_type', 'tutorial')
+            ->where('req_request_status','new')
             ->leftjoin('school', 'school.id_school','=','request.id_school')
             ->leftjoin('tutorial_request', 'tutorial_request.id_tutorial_request','=','request.id_tutorial_request')
             ->count();
 
         $request_resource = mRequest::where('req_type', 'resource')
+            ->where('req_request_status','new')
             ->leftjoin('school', 'school.id_school','=','request.id_school')
             ->leftjoin('resource_request', 'resource_request.id_resource_request','=','request.id_resource_request')
             ->get();
         $request_resource_count = mRequest::where('req_type', 'resource')
+            ->where('req_request_status','new')
             ->leftjoin('school', 'school.id_school','=','request.id_school')
             ->leftjoin('resource_request', 'resource_request.id_resource_request','=','request.id_resource_request')
             ->count();
 
+        $offer_count = mOffer::where('offer.id_volunteer', Auth::user()->id_volunteer)
+            ->where('offer_status', 'pending')
+            ->count();
+
         $data = [
-            'user' => $user,
-            'user_count' => $user_count,
-            'school' => $school,
-            'school_count' => $schoolCount,
+            'offer_count' => $offer_count,
             'volunteer_data' => $volunteer_data,
             'request_tutorial' => $request_tutorial,
             'request_tutorial_count' => $request_tutorial_count,

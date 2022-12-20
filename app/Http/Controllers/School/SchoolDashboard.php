@@ -43,7 +43,9 @@ class SchoolDashboard extends Controller
             ->count();
 
         $offer = mOffer::leftjoin('request', 'request.id_request','=','offer.id_request')
-            ->where('request.id_school', Auth::user()->id_school)->count();
+            ->where('request.id_school', Auth::user()->id_school)
+            ->where('offer_status', 'pending')
+            ->count();
 
         $data = [
             'user' => $user,

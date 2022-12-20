@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 
 class ViewOffers extends Controller
 {
@@ -76,6 +78,7 @@ class ViewOffers extends Controller
         $id = Crypt::decrypt($id);
         $offer = mOffer
             ::where('offer.id_offer', $id)
+            ->leftjoin('volunteer', 'volunteer.id_volunteer','=','offer.id_volunteer')
             ->first();
 
         $data_insert = [
@@ -83,6 +86,14 @@ class ViewOffers extends Controller
         ];
 
         $offer->update($data_insert);
+
+        $email = $offer->vol_email;
+        $data = [
+            "subject"=>"School Help Notification",
+            "body"=>"Thankyou for your support!"
+        ];
+        Mail::to($email)->send(new SendMail($data));
+
         return redirect()->back();
     }
 

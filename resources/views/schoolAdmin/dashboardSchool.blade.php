@@ -253,7 +253,13 @@
                                 <td>{{$request_tutorial[$i]->req_description}}</td>
                                 <td>{{$request_tutorial[$i]->student_level}}</td>
                                 <td>{{$request_tutorial[$i]->student_amount}}</td>
-                                <td class="d-flex justify-content-center"><span class="badge-success badge-pill">{{$request_tutorial[$i]->req_request_status}}</span></td>
+                                <td class="d-flex justify-content-center">
+                                    @if($request_tutorial[$i]->req_request_status === 'new')
+                                        <span class="badge-success badge-pill">{{$request_tutorial[$i]->req_request_status}}</span>
+                                    @else
+                                        <span class="badge-danger badge-pill">{{$request_tutorial[$i]->req_request_status}}</span>
+                                    @endif
+                                </td>
                             </tr>
                         @endfor
                         </tbody>
