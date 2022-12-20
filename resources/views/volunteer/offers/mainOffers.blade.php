@@ -78,7 +78,7 @@
                         {{--                        </a>--}}
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('dashboardVolunteer')}}" class="nav-link active">
+                                <a href="{{route('dashboardVolunteer')}}" class="nav-link ">
                                     <i class="fa fa-home nav-icon"></i>
                                     <p>Dashboard Volunteer</p>
                                 </a>
@@ -86,7 +86,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('viewOffersVolunteer')}}" class="nav-link">
+                                <a href="{{route('viewOffersVolunteer')}}" class="nav-link active">
                                     <i class="fa fa-hand-holding nav-icon"></i>
                                     <p>Offers</p>
                                 </a>
