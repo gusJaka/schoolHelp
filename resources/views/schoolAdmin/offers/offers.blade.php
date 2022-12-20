@@ -114,6 +114,13 @@
                                             <i class="fa fa-eye text-white"></i>
                                             View Offers
                                         </a>
+                                        <a type="button" class="btn btn-danger text-center mx-3"
+                                           onclick="return confirm('Are you sure?')"
+                                           href="{{route('closeRequest', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($request[$i]->id_request)])}}"
+                                           title="View Offers">
+                                            <i class="fa fa-times text-white"></i>
+                                            Close
+                                        </a>
                                     </td>
                                 </tr>
                             @endfor

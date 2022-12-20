@@ -47,6 +47,7 @@ Route::post('/dashboard-school/submit-request-resource', [App\Http\Controllers\S
 Route::get('/view-offers', [App\Http\Controllers\School\ViewOffers::class, 'index'])->name('viewOffers');
 Route::get('/view-offers/view-offer-detail/{id}', [App\Http\Controllers\School\ViewOffers::class, 'view_offers'])->name('viewOffersDetail');
 Route::get('/view-offers/view-offer-detail/accept-offer/{id}', [App\Http\Controllers\School\ViewOffers::class, 'accept_offer'])->name('acceptOffer');
+Route::get('/view-offers/view-offer-detail/close-request/{id}', [App\Http\Controllers\School\ViewOffers::class, 'close_request'])->name('closeRequest');
 
 /**
  * Volunteer

@@ -287,7 +287,11 @@
                                 <td>{{$request_resource[$i]->res_resource_type}}</td>
                                 <td>{{$request_resource[$i]->res_number_required}}</td>
                                 <td class="d-flex justify-content-center">
-                                    <span class="badge-success badge-pill">{{$request_resource[$i]->req_request_status}}</span>
+                                    @if($request_resource[$i]->req_request_status === 'new')
+                                        <span class="badge-success badge-pill">{{$request_resource[$i]->req_request_status}}</span>
+                                    @else
+                                        <span class="badge-danger badge-pill">{{$request_resource[$i]->req_request_status}}</span>
+                                    @endif
                                 </td>
                             </tr>
                         @endfor

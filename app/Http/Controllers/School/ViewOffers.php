@@ -85,4 +85,19 @@ class ViewOffers extends Controller
         $offer->update($data_insert);
         return redirect()->back();
     }
+
+    public function close_request($id)
+    {
+        $id = Crypt::decrypt($id);
+        $request = mRequest
+            ::where('request.id_request', $id)
+            ->first();
+
+        $data_insert = [
+            'req_request_status' => 'closed',
+        ];
+
+        $request->update($data_insert);
+        return redirect()->back();
+    }
 }
