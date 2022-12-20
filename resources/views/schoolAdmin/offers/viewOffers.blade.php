@@ -143,7 +143,7 @@
                                     <td>{{$offer[$i]->vol_occupation}}</td>
                                     <td class="d-flex justify-content-center">
                                         <a type="button" class="btn btn-success text-center mx-3"
-                                           href="{{route('viewOffersDetail', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($offer[$i]->id_request)])}}"
+                                           href="{{route('acceptOffer', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($offer[$i]->id_offer)])}}"
                                            title="View Offers">
                                             <i class="fa fa-eye text-white"></i>
                                             Accept Offer

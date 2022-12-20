@@ -9,6 +9,7 @@ use App\Models\School;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class ViewOffers extends Controller
 {
@@ -31,7 +32,9 @@ class ViewOffers extends Controller
             ->get();
 
         $offer_count = mOffer::leftjoin('request', 'request.id_request','=','offer.id_request')
-            ->where('request.id_school', Auth::user()->id_school)->count();
+            ->where('request.id_school', Auth::user()->id_school)
+            ->where('offer_status', 'pending')
+            ->count();
 
 
         $data = [
@@ -66,5 +69,20 @@ class ViewOffers extends Controller
         ];
 
         return view('schoolAdmin/offers/viewOffers', $data);
+    }
+
+    public function accept_offer($id)
+    {
+        $id = Crypt::decrypt($id);
+        $offer = mOffer
+            ::where('offer.id_offer', $id)
+            ->first();
+
+        $data_insert = [
+            'offer_status' => 'accepted',
+        ];
+
+        $offer->update($data_insert);
+        return redirect()->back();
     }
 }
