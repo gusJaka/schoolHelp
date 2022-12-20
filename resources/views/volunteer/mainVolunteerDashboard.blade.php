@@ -79,7 +79,7 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{route('dashboardVolunteer')}}" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
+                                    <i class="fa fa-home nav-icon"></i>
                                     <p>Dashboard Volunteer</p>
                                 </a>
                             </li>
