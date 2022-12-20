@@ -44,6 +44,8 @@ Route::get('/manage-users/delete/{id}', [App\Http\Controllers\Users::class, 'des
 Route::get('/dashboard-school', [App\Http\Controllers\School\SchoolDashboard::class, 'index'])->name('requestSchool');
 Route::post('/dashboard-school/submit-request-tutorial', [App\Http\Controllers\School\SchoolDashboard::class, 'store_tutorial'])->name('submitRequestTutorial');
 Route::post('/dashboard-school/submit-request-resource', [App\Http\Controllers\School\SchoolDashboard::class, 'store_resource'])->name('submitRequestResource');
+Route::get('/view-offers', [App\Http\Controllers\School\ViewOffers::class, 'index'])->name('viewOffers');
+Route::get('/view-offers/view-offer-detail/{id}', [App\Http\Controllers\School\ViewOffers::class, 'view_offers'])->name('viewOffersDetail');
 
 /**
  * Volunteer

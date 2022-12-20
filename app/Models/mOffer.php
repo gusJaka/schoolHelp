@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -26,6 +27,11 @@ class mOffer extends Model
     {
         return \Carbon\Carbon::parse($this->attributes['updated_at'])
             ->diffForHumans();
+    }
+
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->attributes['vol_birth_date'])->age;
     }
 
     public function scopeWhereLike($query, $column, $value)

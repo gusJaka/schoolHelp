@@ -69,16 +69,16 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item menu-open">
-{{--                        <a href="#" class="nav-link active">--}}
-{{--                            <i class="nav-icon far fa-plus-square"></i>--}}
-{{--                            <p>--}}
-{{--                                Extras--}}
-{{--                                <i class="fas fa-angle-left right"></i>--}}
-{{--                            </p>--}}
-{{--                        </a>--}}
+                        {{--                        <a href="#" class="nav-link active">--}}
+                        {{--                            <i class="nav-icon far fa-plus-square"></i>--}}
+                        {{--                            <p>--}}
+                        {{--                                Extras--}}
+                        {{--                                <i class="fas fa-angle-left right"></i>--}}
+                        {{--                            </p>--}}
+                        {{--                        </a>--}}
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('requestSchool')}}" class="nav-link active">
+                                <a href="{{route('requestSchool')}}" class="nav-link ">
                                     <i class="fa fa-home nav-icon"></i>
                                     <p>Dashboard School</p>
                                 </a>
@@ -86,7 +86,7 @@
                         </ul>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('viewOffers')}}" class="nav-link">
+                                <a href="{{route('viewOffers')}}" class="nav-link active">
                                     <i class="fa fa-hand-holding nav-icon"></i>
                                     <p>List of Request</p>
                                 </a>
@@ -111,7 +111,7 @@
         <div class="float-right d-none d-sm-block">
             <b>School Help</b> 2022
         </div>
-{{--        <strong>School Help 2022</strong>--}}
+        {{--        <strong>School Help 2022</strong>--}}
     </footer>
 
     <!-- Control Sidebar -->
